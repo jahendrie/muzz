@@ -1,0 +1,107 @@
+================================================================================
+    muzz.c      |   version 1.01    |   zlib license        |   2017-11-23
+    James Hendrie                   |   hendrie dot james at gmail dot com
+================================================================================
+
+    1.  Description
+    2.  Installation / Uninstallation
+    3.  Usage
+    4.  Examples
+    5.  Contact, etc.
+
+
+
+----------------------------------------
+    1.  Description
+----------------------------------------
+
+    muzz is a program that will calculate a projectile's energy given its
+    mass and velocity (or the reverse).  It'll also do the whole 'Taylor
+    Knockout Formula' thing, if you're into that for some reason.
+
+
+
+----------------------------------------
+    2.  Installation / Uninstallation
+----------------------------------------
+
+    To install, compile the program with 'make'.  It shouldn't take long, though
+    obviously you'll need a C compiler.  If you're on any modern UNIX or Linux
+    distro you should already have one, and if you don't, shame on you.  Go
+    install GCC from your distro's package manager (or gcc.gnu.org) right away.
+
+    It links to the std math library, which you should already have.
+
+    After you've compiled the program, install it to your system by issuing
+    'make install' with superuser privileges.
+
+    To remove the program and all its accessories, return to the directory to
+    which you originally extracted the tarball (or whichever directory has the
+    Makefile for this program) and type 'make uninstall', again with superuser
+    privileges.
+
+
+----------------------------------------
+    3.  Usage
+----------------------------------------
+
+Usage:  muzz [OPTION] MASS VELOCITY [DIAMETER]
+
+Options
+  -h		Print this help text
+  -H		Print additional information on units used, etc.
+  -E		Print example usage
+  -V		Print version and author info
+  -S or q	Silent (quiet) mode; print only the resultant number
+  -s		Use Si (metric) units of measure - grams, m/s, joules
+  -i		Use Imperial units - grains, ft/s, lbf (default)
+  -m		Calculate for mass (num1 = velocity, num2 = energy)
+  -v		Calculate for velocity (num1 = mass, num2 = energy)
+  -e		Calculate for energy (num1 = mass, num2 = velocity) (default)
+  -K		Use industry standard imperial constant (450,240)  (default)
+  -k [num]	Custom user constant
+  -c		Calculate constant using 'industry' GAC-1
+  -C		Calculate constant using standard GAC-2
+  -p		Be precise (do not round any numbers)
+  -t		Use Taylor Knockout Formula (give mass, velocity, diameter)
+
+
+----------------------------------------
+    4.  Examples
+----------------------------------------
+
+muzz 230 900
+  Returns muzzle energy of a 230 grain bullet @ 900 ft/s
+
+muzz -s 15 270
+  Using Si units of measure, returns joules (15grams @ 270 m/s)
+
+muzz -qp 230 900
+  Same, but only the number and with nothing rounded
+
+muzz -mq 900 414
+  Given the velocity and muzzle energy, it will return only the mass
+  of the projectile.
+
+muzz -t 230 860 .45
+  Prints result using Taylor Knockout Formula, with the params being
+  the mass (grains), velocity (ft/s) and diameter
+
+muzz -ts 15 255 11.6
+  Same, but using Si units (grams, meters/second, mm)
+
+
+
+----------------------------------------
+    5.  Contact, etc.
+----------------------------------------
+
+    Author:
+        James Hendrie
+        hendrie.james@gmail.com
+        hendrie.james@protonmail.com
+
+    Sites:
+        http://www.someplacedumb/net/content/progs
+        https://github.com/jahendrie
+            https://github.com/jahendrie/muzz    <-- This program!
